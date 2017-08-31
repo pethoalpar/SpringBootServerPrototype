@@ -20,7 +20,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="atraxo" id="uk_role_1" runOnChange="true">
+    <changeSet author="pethoalpar" id="uk_role_1" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> <indexExists indexName="uk_role_1" /> </not>
         </preConditions>
