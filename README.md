@@ -374,6 +374,7 @@ public class Role{
         this.users.add(e);
     }
 }
+```
 
 <h3>User entity</h3>
 
