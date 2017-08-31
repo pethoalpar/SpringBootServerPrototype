@@ -10,11 +10,11 @@
             <not> <tableExists tableName="user" /> </not>
         </preConditions>
         <createTable tableName="user">
-            <column name="role_id" type="int(11)">
+            <column name="role_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="id" type="int(11)">
-                <constraints nullable="false"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="user_name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -29,17 +29,6 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet author="atraxo" id="pk-user" runOnChange="true">
-        <preConditions onFail="MARK_RAN">
-            <not> <primaryKeyExists tableName="user"/> </not>
-        </preConditions>
-        <addPrimaryKey
-                constraintName="pk_user"
-                tableName="user"
-                columnNames="id"/>
-        <rollback />
     </changeSet>
 
     <changeSet author="atraxo" id="uk_user_1" runOnChange="true">

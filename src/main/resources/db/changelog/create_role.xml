@@ -10,25 +10,14 @@
             <not> <tableExists tableName="role" /> </not>
         </preConditions>
         <createTable tableName="role">
-            <column name="id" type="int(11)">
-                <constraints nullable="false"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="role_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="active" type="int(1)" defaultValue="NULL"/>
         </createTable>
-    </changeSet>
-
-    <changeSet author="pethoalpar" id="pk_role" runOnChange="true">
-        <preConditions onFail="MARK_RAN">
-            <not> <primaryKeyExists tableName="role"/> </not>
-        </preConditions>
-        <addPrimaryKey
-                constraintName="pk_role"
-                tableName="role"
-                columnNames="id"/>
-        <rollback />
     </changeSet>
 
     <changeSet author="atraxo" id="uk_role_1" runOnChange="true">

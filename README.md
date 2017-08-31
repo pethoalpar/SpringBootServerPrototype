@@ -106,25 +106,14 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
             <not> <tableExists tableName="role" /> </not>
         </preConditions>
         <createTable tableName="role">
-            <column name="id" type="int(11)" autoincrement="true">
-                <constraints nullable="false"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="role_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="active" type="int(1)" defaultValue="NULL"/>
         </createTable>
-    </changeSet>
-
-    <changeSet author="pethoalpar" id="pk_role" runOnChange="true">
-        <preConditions onFail="MARK_RAN">
-            <not> <primaryKeyExists tableName="role"/> </not>
-        </preConditions>
-        <addPrimaryKey
-                constraintName="pk_role"
-                tableName="role"
-                columnNames="id"/>
-        <rollback />
     </changeSet>
 
     <changeSet author="atraxo" id="uk_role_1" runOnChange="true">
@@ -140,7 +129,7 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
 </databaseChangeLog>
 ```
 
-<h3>Create user table and foeign key</h3>
+<h3>Create user table and foreign key</h3>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -149,16 +138,17 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
+
     <changeSet author="atraxo" id="tbl_user" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> <tableExists tableName="user" /> </not>
         </preConditions>
         <createTable tableName="user">
-            <column name="role_id" type="int(11)" autoincrement="true">
+            <column name="role_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="id" type="int(11)">
-                <constraints nullable="false"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="user_name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -173,17 +163,6 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
                 <constraints nullable="true"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet author="atraxo" id="pk-user" runOnChange="true">
-        <preConditions onFail="MARK_RAN">
-            <not> <primaryKeyExists tableName="user"/> </not>
-        </preConditions>
-        <addPrimaryKey
-                constraintName="pk_user"
-                tableName="user"
-                columnNames="id"/>
-        <rollback />
     </changeSet>
 
     <changeSet author="atraxo" id="uk_user_1" runOnChange="true">
