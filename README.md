@@ -116,7 +116,7 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
         </createTable>
     </changeSet>
 
-    <changeSet author="atraxo" id="uk_role_1" runOnChange="true">
+    <changeSet author="pethoalpar" id="uk_role_1" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> <indexExists indexName="uk_role_1" /> </not>
         </preConditions>
@@ -139,7 +139,7 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 
-    <changeSet author="atraxo" id="tbl_user" runOnChange="true">
+    <changeSet author="pethoalpar" id="tbl_user" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> <tableExists tableName="user" /> </not>
         </preConditions>
@@ -165,7 +165,7 @@ liquibase.change-log=classpath:/db/changelog/db.changelog-master.xml
         </createTable>
     </changeSet>
 
-    <changeSet author="atraxo" id="uk_user_1" runOnChange="true">
+    <changeSet author="pethoalpar" id="uk_user_1" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> <indexExists indexName="uk_user_1" /> </not>
         </preConditions>
